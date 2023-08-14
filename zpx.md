@@ -2,7 +2,7 @@
  * @Autor: violet apricity ( Zhuangpx )
  * @Date: 2023-08-10 20:52:30
  * @LastEditors: violet apricity ( Zhuangpx )
- * @LastEditTime: 2023-08-14 16:34:55
+ * @LastEditTime: 2023-08-14 16:37:24
  * @FilePath: \Road2TikTok\zpx.md
  * @Description:  Zhuangpx : Violet && Apricity:/ The warmth of the sun in the winter
 -->
@@ -20,7 +20,7 @@
 
 ## Ref
 
-<https://github.com/bytedance-youthcamp-jbzx/tiktok/>
-<https://github.com/Go-To-Byte/DouSheng/>
-<https://github.com/writiger/dousheng_server/>
-<https://github.com/a76yyyy/tiktok/>
+- <https://github.com/bytedance-youthcamp-jbzx/tiktok/>
+- <https://github.com/Go-To-Byte/DouSheng/>
+- <https://github.com/writiger/dousheng_server/>
+- <https://github.com/a76yyyy/tiktok/>
