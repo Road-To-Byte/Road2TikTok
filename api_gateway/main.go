@@ -2,13 +2,14 @@
  * @Autor: violet apricity ( Zhuangpx )
  * @Date: 2023-08-14 18:04:38
  * @LastEditors: violet apricity ( Zhuangpx )
- * @LastEditTime: 2023-08-15 15:12:27
+ * @LastEditTime: 2023-08-21 01:29:16
  * @FilePath: \Road2TikTok\api_gateway\main.go
  * @Description:  Zhuangpx : Violet && Apricity:/ The warmth of the sun in the winter /
  */
 package main
 
 import (
+	"github.com/Road-To-Byte/Road2TikTok/api_gateway/handler"
 	"github.com/gin-gonic/gin"
 )
 
@@ -25,7 +26,7 @@ func registerGroup(r *gin.Engine) {
 		user := douyin.Group("/user")
 		{
 			//	用户信息
-			user.GET("/")
+			user.GET("/", handler.UserInfo)
 			//	用户注册
 			user.POST("/register/")
 			//	用户登录
