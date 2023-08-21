@@ -1,0 +1,18 @@
+// 指定版本
+syntax = "proto3";
+
+//  指定路径
+option go_package = "rpc/pb";
+
+message UserInfoRequest {
+  string Token = 1;
+  string UserId = 2;
+}
+
+message UserInfoResponse {
+  string debug_res = 1;
+}
+
+service UserInfoService {
+  rpc UserInfo (UserInfoRequest) returns (UserInfoResponse);
+}
