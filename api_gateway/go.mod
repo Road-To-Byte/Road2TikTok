@@ -1,4 +1,4 @@
-module github.com/Road-To-Byte/Road2TikTok
+module github.com/Road-To-Byte/Road2TikTok/api_gateway
 
 go 1.18
 
