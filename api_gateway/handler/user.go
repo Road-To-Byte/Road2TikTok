@@ -2,7 +2,7 @@
  * @Autor: violet apricity ( Zhuangpx )
  * @Date: 2023-08-15 15:48:03
  * @LastEditors: violet apricity ( Zhuangpx )
- * @LastEditTime: 2023-08-21 22:07:13
+ * @LastEditTime: 2023-08-22 14:40:37
  * @FilePath: \Road2TikTok\api_gateway\handler\user.go
  * @Description:  Zhuangpx : Violet && Apricity:/ The warmth of the sun in the winter /
  */
@@ -34,8 +34,8 @@ func UserInfo(ctx *gin.Context) {
 	//	TODO:	在这里提前对发送来的json数据做check 如检查UserID是否合法
 	//	调用grpc的client 即调用在./rpc/xx.go里的client grpc从server取到服务
 	userInfoRequest := &pb.UserInfoRequest{
-		Token:  userInfoRequestData.Token,
-		UserId: userInfoRequestData.UserID,
+		// Token:  userInfoRequestData.Token,
+		// UserId: userInfoRequestData.UserID,
 	}
 	rpc.UserInfo(ctx, userInfoRequest)
 }
