@@ -3,4 +3,6 @@ go 1.18
 use (
   ./api_gateway
   ./service/user_service
+  ./pkg
+  ./dal
 )
