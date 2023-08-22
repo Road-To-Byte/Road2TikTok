@@ -10,7 +10,7 @@
 
 ## Pre list
 
-- Gin web框架，支持微服务
+- Gin web框架
 - Hertz web框架，字节跳动自己研发
 - Kitex rpc框架
 - etcd 分布式键值存储，服务注册与发现
@@ -22,6 +22,50 @@
 HTTP框架用gin
 rpc/微服务框架用grpc 并用etcd做服务注册和发现
 dal数据层
+
+## cmd
+
+### proto
+
+```shell
+protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative pb/xx.proto
+```
+
+## package
+
+### pkg
+
+- jwt
+
+  - ```shell
+    go get go.uber.org/zap
+    ```
+
+- viper
+
+  - ```shell
+    go get github.com/spf13/viper
+    ```
+
+- zap
+
+  - ```shell
+    go get go.uber.org/zap
+    ```
+
+  - lumberjack
+
+    - ```shell
+      go get gopkg.in/natefinch/lumberjack.v2
+      ```
+
+- etcd
+
+  - ```shell
+    go get go.etcd.io/etcd/clientv3
+    ```
+
+- x
 
 ## Version
 
