@@ -63,9 +63,33 @@ protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=p
 
   - ```shell
     go get go.etcd.io/etcd/clientv3
+    或者
+    go get go.etcd.io/etcd/client/v3@v3.5.9
     ```
 
 - x
+
+### dal
+
+- gorm
+
+  - ```shell
+    go get -u gorm.io/gorm
+    ```
+    
+  - plugin
+  
+    - ```shell
+      go get gorm.io/plugin/dbresolver
+      ```
+  
+- mysql
+
+  - ```shell
+    go get -u gorm.io/driver/mysql
+    ```
+
+- 
 
 ## Version
 
