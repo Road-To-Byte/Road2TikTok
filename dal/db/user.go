@@ -2,7 +2,7 @@
  * @Autor: violet apricity ( Zhuangpx )
  * @Date: 2023-08-22 17:19:49
  * @LastEditors: violet apricity ( Zhuangpx )
- * @LastEditTime: 2023-08-24 17:07:15
+ * @LastEditTime: 2023-08-25 17:21:31
  * @FilePath: \Road2TikTok\dal\db\user.go
  * @Description:  Zhuangpx : Violet && Apricity:/ The warmth of the sun in the winter /
  */
@@ -123,4 +123,13 @@ func CreateUser(ctx context.Context, user *User) error {
 		return nil
 	})
 	return err
+}
+
+//	检查 Name 是否重复
+func CheckNameRepeat(ctx context.Context, userName string) (bool, error) {
+	usr, err := GetUserByName(ctx, userName)
+	if usr != nil {
+		return true, nil
+	}
+	return false, err
 }

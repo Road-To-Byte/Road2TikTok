@@ -1,0 +1,28 @@
+mysql:
+  # 主数据库
+  source:
+    driverName: mysql
+    host: 127.0.0.1
+    port: 5550
+    database: r2tiktok_db
+    username: r2tiktok_db
+    password: r2tiktok_db
+    charset: utf8mb4
+
+  # 从数据库
+  replica1:
+    driverName: mysql
+    host: 127.0.0.1
+    port: 5551
+    database: r2tiktok_db_1
+    username: r2tiktok_db_1
+    password: r2tiktok_db_1
+    charset: utf8mb4
+  replica2:
+    driverName: mysql
+    host: 127.0.0.1
+    port: 5552
+    database: r2tiktok_db_2
+    username: r2tiktok_db_2
+    password: r2tiktok_db_2
+    charset: utf8mb4

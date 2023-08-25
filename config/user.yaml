@@ -1,0 +1,15 @@
+server:
+  name: "UserServer"
+  host: 0.0.0.0
+  port: 6661
+
+rpc:
+  host: 127.0.0.1
+  port: 66661
+
+JWT:
+  signingKey: "r2tiktokSigningKey"
+
+etcd:
+  host: 0.0.0.0
+  port: 2379
