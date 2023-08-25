@@ -2,7 +2,7 @@
  * @Autor: violet apricity ( Zhuangpx )
  * @Date: 2023-08-23 19:52:24
  * @LastEditors: violet apricity ( Zhuangpx )
- * @LastEditTime: 2023-08-23 21:08:31
+ * @LastEditTime: 2023-08-25 16:12:07
  * @FilePath: \Road2TikTok\dal\db\init.go
  * @Description:  Zhuangpx : Violet && Apricity:/ The warmth of the sun in the winter /
  */
@@ -13,7 +13,7 @@ import (
 	"log"
 	"time"
 
-	// "github.com/Road-To-Byte/Road2TikTok/pkg/viper"
+	"github.com/Road-To-Byte/Road2TikTok/pkg/viper"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
