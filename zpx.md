@@ -103,3 +103,4 @@ protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=p
 - <https://github.com/writiger/dousheng_server/>
 - <https://github.com/a76yyyy/tiktok/>
 - [一个基于 gin+ grpc + etcd 等框架开发的小栗子](https://www.cnblogs.com/M-Anonymous/p/17159371.html)
+- [go-struct优雅初始化：Option](https://blog.csdn.net/raoxiaoya/article/details/121486227?spm=1001.2101.3001.6650.4&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-4-121486227-blog-103651182.235%5Ev38%5Epc_relevant_anti_t3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-4-121486227-blog-103651182.235%5Ev38%5Epc_relevant_anti_t3&utm_relevant_index=5)

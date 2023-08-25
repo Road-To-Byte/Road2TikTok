@@ -2,7 +2,7 @@
  * @Autor: violet apricity ( Zhuangpx )
  * @Date: 2023-08-22 17:19:49
  * @LastEditors: violet apricity ( Zhuangpx )
- * @LastEditTime: 2023-08-23 21:08:02
+ * @LastEditTime: 2023-08-24 17:07:15
  * @FilePath: \Road2TikTok\dal\db\user.go
  * @Description:  Zhuangpx : Violet && Apricity:/ The warmth of the sun in the winter /
  */
@@ -15,19 +15,29 @@ import (
 	"gorm.io/plugin/dbresolver"
 )
 
+/*
+type Model struct {
+  ID        uint `gorm:"primary_key"`
+  CreatedAt time.Time
+  UpdatedAt time.Time
+  DeletedAt *time.Time
+}
+*/
+
 //	============ User 用户数据结构 ============
 type User struct {
-	UserName        string
-	Password        string
-	FollowCount     int64
-	FollowerCount   int64
-	Avatar          string
-	BackgroundImage string
-	TotalFavorited  int64
-	WorkCount       int64
-	FavoriteCount   int64
-	// FavoriteVideos  []Video
-	Signature string
+	gorm.Model
+	UserName        string `gorm:"index:idx_username,unique;type:varchar(40);not null" json:"name,omitempty"`
+	Password        string `gorm:"type:varchar(256);not null" json:"password,omitempty"`
+	FollowCount     uint   `gorm:"default:0;not null" json:"follow_count,omitempty"`
+	FollowerCount   uint   `gorm:"default:0;not null" json:"follower_count,omitempty"`
+	Avatar          string `gorm:"type:varchar(256)" json:"avatar,omitempty"`
+	BackgroundImage string `gorm:"column:background_image;type:varchar(256);default:default_background.jpg" json:"background_image,omitempty"`
+	TotalFavorited  int64  `gorm:"default:0;not null" json:"total_favorited,omitempty"`
+	WorkCount       int64  `gorm:"default:0;not null" json:"work_count,omitempty"`
+	FavoriteCount   int64  `gorm:"default:0;not null" json:"favorite_count,omitempty"`
+	// FavoriteVideos  []Video `gorm:"many2many:user_favorite_videos" json:"favorite_videos,omitempty"`
+	Signature string `gorm:"type:varchar(256)" json:"signature,omitempty"`
 }
 
 //	============ 数据库修改操作 ===========
@@ -91,4 +101,26 @@ func GetPasswordByUsername(ctx context.Context, userName string) (*User, error) 
 	} else {
 		return nil, err
 	}
+}
+
+//	添加 []Users
+func CreateUsers(ctx context.Context, users []*User) error {
+	err := GetDB().Clauses(dbresolver.Write).WithContext(ctx).Transaction(func(tx *gorm.DB) error {
+		if err := tx.Create(users).Error; err != nil {
+			return err
+		}
+		return nil
+	})
+	return err
+}
+
+//	添加 User
+func CreateUser(ctx context.Context, user *User) error {
+	err := GetDB().Clauses(dbresolver.Write).WithContext(ctx).Transaction(func(tx *gorm.DB) error {
+		if err := tx.Create(user).Error; err != nil {
+			return err
+		}
+		return nil
+	})
+	return err
 }
