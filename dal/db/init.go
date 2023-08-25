@@ -13,7 +13,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/Road-To-Byte/Road2TikTok/pkg/viper"
+	// "github.com/Road-To-Byte/Road2TikTok/pkg/viper"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -22,21 +22,21 @@ import (
 
 //	db的初始化操作
 
-//	全局变量
+// 全局变量
 var (
 	__err  error
 	__db   *gorm.DB
 	config = viper.Init("db")
 )
 
-//	获取gorm.DB对象
+// 获取gorm.DB对象
 func GetDB() *gorm.DB {
 	return __db
 }
 
-//	DSN:Data Source Name
-//	eg: <driver-name>://<username>:<password>@<host>:<port>/<database-name>
-//	根据 driverWithRole 获取 DSN
+// DSN:Data Source Name
+// eg: <driver-name>://<username>:<password>@<host>:<port>/<database-name>
+// 根据 driverWithRole 获取 DSN
 func getDSN(driverWithRole string) string {
 	username := config.Viper.GetString(fmt.Sprintf("%s.username", driverWithRole))
 	password := config.Viper.GetString(fmt.Sprintf("%s.password", driverWithRole))
@@ -53,10 +53,10 @@ func getDSN(driverWithRole string) string {
 	return dsn
 }
 
-//	初始化
-//	这里用到了gorm的一个插件dbresolver
-//	用于实现数据库读写分离和负载均衡功能
-//	这个插件允许配置多个数据库连接（主数据库和多个从数据库），并且可以根据一定的策略将读操作分发到不同的从数据库上，实现读操作的负载均衡
+// 初始化
+// 这里用到了gorm的一个插件dbresolver
+// 用于实现数据库读写分离和负载均衡功能
+// 这个插件允许配置多个数据库连接（主数据库和多个从数据库），并且可以根据一定的策略将读操作分发到不同的从数据库上，实现读操作的负载均衡
 func init() {
 	//	主数据库 sources
 	dsn1 := getDSN("mysql.source")
