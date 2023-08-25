@@ -3,9 +3,10 @@ package db
 import (
 	"context"
 	"errors"
+	"time"
+
 	"gorm.io/gorm"
 	"gorm.io/plugin/dbresolver"
-	"time"
 )
 
 type Video struct {
