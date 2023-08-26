@@ -2,7 +2,7 @@
  * @Autor: violet apricity ( Zhuangpx )
  * @Date: 2023-08-21 02:01:49
  * @LastEditors: violet apricity ( Zhuangpx )
- * @LastEditTime: 2023-08-25 18:14:33
+ * @LastEditTime: 2023-08-26 17:04:16
  * @FilePath: \Road2TikTok\service\user_service\service\handler.go
  * @Description:  Zhuangpx : Violet && Apricity:/ The warmth of the sun in the winter /
  */
@@ -22,14 +22,15 @@ import (
 
 type UserServiceImpl struct{}
 
-//	UserInfo
+// UserInfo
 func (this *UserServiceImpl) UserInfo(ctx context.Context, req *pb.UserInfoRequest) (resp *pb.UserInfoResponse, err error) {
+	log.Panicln("UserInfo get")
 	usrID := req.UserId
 	//	dal取出user
 	usr, err := db.GetUserByUserID(ctx, usrID)
 	//	check err
 	if err != nil {
-		log.Fatalln("服务器发生错误：%v", err.Error())
+		log.Fatalln("服务器发生错误：", err.Error())
 		resp := &pb.UserInfoResponse{
 			StatusCode: -1,
 			StatusMsg:  "服务器错误：获取用户失败",
@@ -72,7 +73,7 @@ func (this *UserServiceImpl) UserInfo(ctx context.Context, req *pb.UserInfoReque
 	return resp, nil
 }
 
-//	Login
+// Login
 func (this *UserServiceImpl) Login(ctx context.Context, req *pb.UserLoginRequest) (resp *pb.UserLoginResponse, err error) {
 	/*
 		username
@@ -82,7 +83,7 @@ func (this *UserServiceImpl) Login(ctx context.Context, req *pb.UserLoginRequest
 	usr, err := db.GetUserByName(ctx, req.Username)
 	//	check get error
 	if err != nil {
-		log.Fatalln("获取用户失败：%v", err.Error())
+		log.Fatalln("获取用户失败：", err.Error())
 		resp = &pb.UserLoginResponse{
 			StatusCode: -1,
 			StatusMsg:  "服务器错误：获取用户失败",
@@ -114,7 +115,7 @@ func (this *UserServiceImpl) Login(ctx context.Context, req *pb.UserLoginRequest
 	claims.ExpiresAt = time.Now().Add(time.Hour * 24).Unix()
 	token, err := Jwt.GenToken(claims)
 	if err != nil {
-		log.Fatalln("token创建失败：%v", err.Error())
+		log.Fatalln("token创建失败：", err.Error())
 		resp = &pb.UserLoginResponse{
 			StatusCode: -1,
 			StatusMsg:  "服务器错误：token创建失败",
@@ -131,7 +132,7 @@ func (this *UserServiceImpl) Login(ctx context.Context, req *pb.UserLoginRequest
 	return resp, nil
 }
 
-//	Register
+// Register
 func (this *UserServiceImpl) Register(ctx context.Context, req *pb.UserRegisterRequest) (resp *pb.UserRegisterResponse, err error) {
 	//	check error
 	// usr, err := db.GetUserByName(ctx, req.Username)
@@ -145,7 +146,7 @@ func (this *UserServiceImpl) Register(ctx context.Context, req *pb.UserRegisterR
 	// }
 	//	check username
 	if fl, _ := db.CheckNameRepeat(ctx, req.Username); fl == true {
-		log.Fatalln("用户名已存在：%s", req.Username)
+		log.Fatalln("用户名已存在：", req.Username)
 		resp = &pb.UserRegisterResponse{
 			StatusCode: -1,
 			StatusMsg:  "用户名已存在",
@@ -162,7 +163,7 @@ func (this *UserServiceImpl) Register(ctx context.Context, req *pb.UserRegisterR
 	}
 	err = db.CreateUser(ctx, usr)
 	if err != nil {
-		log.Fatalln("注册失败：%v", err.Error())
+		log.Fatalln("注册失败：", err.Error())
 		resp = &pb.UserRegisterResponse{
 			StatusCode: -1,
 			StatusMsg:  "服务器错误：注册失败",
@@ -176,7 +177,7 @@ func (this *UserServiceImpl) Register(ctx context.Context, req *pb.UserRegisterR
 	claims.ExpiresAt = time.Now().Add(time.Hour * 24).Unix()
 	token, err := Jwt.GenToken(claims)
 	if err != nil {
-		log.Fatalln("token创建失败：%v", err.Error())
+		log.Fatalln("token创建失败：", err.Error())
 		resp = &pb.UserRegisterResponse{
 			StatusCode: -1,
 			StatusMsg:  "服务器错误：token创建失败",
