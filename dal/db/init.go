@@ -2,7 +2,7 @@
  * @Autor: violet apricity ( Zhuangpx )
  * @Date: 2023-08-23 19:52:24
  * @LastEditors: violet apricity ( Zhuangpx )
- * @LastEditTime: 2023-08-25 16:12:07
+ * @LastEditTime: 2023-08-26 15:12:18
  * @FilePath: \Road2TikTok\dal\db\init.go
  * @Description:  Zhuangpx : Violet && Apricity:/ The warmth of the sun in the winter /
  */
@@ -26,7 +26,7 @@ import (
 var (
 	__err  error
 	__db   *gorm.DB
-	config = viper.Init("db")
+	config = viper.Init("database")
 )
 
 // 获取gorm.DB对象
