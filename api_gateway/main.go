@@ -2,7 +2,7 @@
  * @Autor: violet apricity ( Zhuangpx )
  * @Date: 2023-08-14 18:04:38
  * @LastEditors: violet apricity ( Zhuangpx )
- * @LastEditTime: 2023-08-21 01:29:16
+ * @LastEditTime: 2023-08-26 16:40:03
  * @FilePath: \Road2TikTok\api_gateway\main.go
  * @Description:  Zhuangpx : Violet && Apricity:/ The warmth of the sun in the winter /
  */
@@ -10,6 +10,7 @@ package main
 
 import (
 	"github.com/Road-To-Byte/Road2TikTok/api_gateway/handler"
+	"github.com/Road-To-Byte/Road2TikTok/api_gateway/rpc"
 	"github.com/gin-gonic/gin"
 )
 
@@ -20,6 +21,7 @@ func InitGin() *gin.Engine {
 
 //	路由分组 层级api
 func registerGroup(r *gin.Engine) {
+	rpc.InitUserClient()
 	douyin := r.Group("/douyin")
 	{
 		//	user api
@@ -90,5 +92,5 @@ func main() {
 	//	路由分组 api注册
 	registerGroup(router)
 	//	启动
-	router.Run(":9090")
+	router.Run(":6662")
 }
