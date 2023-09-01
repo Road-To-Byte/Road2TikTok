@@ -1,11 +1,11 @@
 server:
-  name: "UserServer"
+  name: "RelationServer"
   host: 0.0.0.0
-  port: 8081
+  port: 8083
 
 rpc:
   host: 127.0.0.1
-  port: 66661
+  port: 66663
 
 JWT:
   signingKey: "r2tiktokSigningKey"
