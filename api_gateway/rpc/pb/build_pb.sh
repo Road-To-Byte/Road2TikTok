@@ -1,4 +1,12 @@
 #!/bin/bash
+###
+ # @Autor: violet apricity ( Zhuangpx )
+ # @Date: 2023-09-01 14:03:04
+ # @LastEditors: violet apricity ( Zhuangpx )
+ # @LastEditTime: 2023-09-01 14:56:33
+ # @FilePath: \Road2TikTok\api_gateway\rpc\pb\build_pb.sh
+ # @Description:  Zhuangpx : Violet && Apricity:/ The warmth of the sun in the winter /
+### 
 
 # 指定输出目录
 output_dir="./"
@@ -17,7 +25,7 @@ for proto_file in "${proto_files[@]}"
 do
   echo "Compiling $proto_file..."
 
-  protoc --go_out=. --go_opt=paths=source_relative \
+  protoc --proto_path=. --go_out=. --go_opt=paths=source_relative \
          --go-grpc_out=. --go-grpc_opt=paths=source_relative "$proto_file"
 
   echo "Compilation of $proto_file completed."
