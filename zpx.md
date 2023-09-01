@@ -28,7 +28,7 @@ dal数据层
 ### proto
 
 ```shell
-protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative pb/xx.proto
+protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative xx.proto
 ```
 
 ## package
@@ -67,7 +67,12 @@ protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=p
     go get go.etcd.io/etcd/client/v3@v3.5.7
     ```
 
-- x
+- errno
+
+  - ```shell
+    go get github.com/a76yyyy/ErrnoCode
+    ```
+
 
 ### dal
 
