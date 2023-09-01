@@ -2,15 +2,15 @@
  * @Autor: violet apricity ( Zhuangpx )
  * @Date: 2023-08-21 01:37:32
  * @LastEditors: violet apricity ( Zhuangpx )
- * @LastEditTime: 2023-09-01 15:05:28
- * @FilePath: \Road2TikTok\api_gateway\rpc\pb\user.proto
+ * @LastEditTime: 2023-09-01 15:29:27
+ * @FilePath: \Road2TikTok\service\video_service\pb\user.proto
  * @Description:  Zhuangpx : Violet && Apricity:/ The warmth of the sun in the winter /
  */
 // 指定版本
 syntax = "proto3";
 
 //  指定路径
-option go_package = "rpc/pb";
+option go_package = "video_service/pb";
 
 //  包名
 package user;

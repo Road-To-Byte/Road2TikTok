@@ -2,7 +2,7 @@
  * @Autor: violet apricity ( Zhuangpx )
  * @Date: 2023-08-22 17:19:49
  * @LastEditors: violet apricity ( Zhuangpx )
- * @LastEditTime: 2023-08-25 17:21:31
+ * @LastEditTime: 2023-09-01 18:47:47
  * @FilePath: \Road2TikTok\dal\db\user.go
  * @Description:  Zhuangpx : Violet && Apricity:/ The warmth of the sun in the winter /
  */
@@ -24,31 +24,31 @@ type Model struct {
 }
 */
 
-//	============ User 用户数据结构 ============
+// ============ User 用户数据结构 ============
 type User struct {
 	gorm.Model
-	UserName        string `gorm:"index:idx_username,unique;type:varchar(40);not null" json:"name,omitempty"`
-	Password        string `gorm:"type:varchar(256);not null" json:"password,omitempty"`
-	FollowCount     uint   `gorm:"default:0;not null" json:"follow_count,omitempty"`
-	FollowerCount   uint   `gorm:"default:0;not null" json:"follower_count,omitempty"`
-	Avatar          string `gorm:"type:varchar(256)" json:"avatar,omitempty"`
-	BackgroundImage string `gorm:"column:background_image;type:varchar(256);default:default_background.jpg" json:"background_image,omitempty"`
-	TotalFavorited  int64  `gorm:"default:0;not null" json:"total_favorited,omitempty"`
-	WorkCount       int64  `gorm:"default:0;not null" json:"work_count,omitempty"`
-	FavoriteCount   int64  `gorm:"default:0;not null" json:"favorite_count,omitempty"`
-	// FavoriteVideos  []Video `gorm:"many2many:user_favorite_videos" json:"favorite_videos,omitempty"`
-	Signature string `gorm:"type:varchar(256)" json:"signature,omitempty"`
+	UserName        string  `gorm:"index:idx_username,unique;type:varchar(40);not null" json:"name,omitempty"`
+	Password        string  `gorm:"type:varchar(256);not null" json:"password,omitempty"`
+	FollowCount     uint    `gorm:"default:0;not null" json:"follow_count,omitempty"`
+	FollowerCount   uint    `gorm:"default:0;not null" json:"follower_count,omitempty"`
+	Avatar          string  `gorm:"type:varchar(256)" json:"avatar,omitempty"`
+	BackgroundImage string  `gorm:"column:background_image;type:varchar(256);default:default_background.jpg" json:"background_image,omitempty"`
+	TotalFavorited  int64   `gorm:"default:0;not null" json:"total_favorited,omitempty"`
+	WorkCount       int64   `gorm:"default:0;not null" json:"work_count,omitempty"`
+	FavoriteCount   int64   `gorm:"default:0;not null" json:"favorite_count,omitempty"`
+	FavoriteVideos  []Video `gorm:"many2many:user_favorite_videos" json:"favorite_videos,omitempty"`
+	Signature       string  `gorm:"type:varchar(256)" json:"signature,omitempty"`
 }
 
 //	============ 数据库修改操作 ===========
 //	在进行读写操作的时候 通过dbresolver 主数据库写 从数据库读 实现读写分离 减小主数据库的压力
 
-//	table name
+// table name
 func (this *User) TableName() string {
 	return "users"
 }
 
-//	根据 []IDs 返回 []Users
+// 根据 []IDs 返回 []Users
 func GetUsersByUserIDs(ctx context.Context, userIDs []int64) ([]*User, error) {
 	users := make([]*User, 0)
 	//	[]IDs 为空
@@ -65,7 +65,7 @@ func GetUsersByUserIDs(ctx context.Context, userIDs []int64) ([]*User, error) {
 	return users, nil
 }
 
-//	根据 ID 返回 User
+// 根据 ID 返回 User
 func GetUserByUserID(ctx context.Context, userID int64) (*User, error) {
 	user := new(User)
 	if err := GetDB().Clauses(dbresolver.Read).WithContext(ctx).First(&user, userID).Error; err == nil {
@@ -79,7 +79,7 @@ func GetUserByUserID(ctx context.Context, userID int64) (*User, error) {
 	}
 }
 
-//	根据 Name 返回 User
+// 根据 Name 返回 User
 func GetUserByName(ctx context.Context, userName string) (*User, error) {
 	user := new(User)
 	if err := GetDB().Clauses(dbresolver.Read).WithContext(ctx).Select("id, user_name, password").Where("user_name = ?", userName).First(&user).Error; err == nil {
@@ -103,7 +103,7 @@ func GetPasswordByUsername(ctx context.Context, userName string) (*User, error) 
 	}
 }
 
-//	添加 []Users
+// 添加 []Users
 func CreateUsers(ctx context.Context, users []*User) error {
 	err := GetDB().Clauses(dbresolver.Write).WithContext(ctx).Transaction(func(tx *gorm.DB) error {
 		if err := tx.Create(users).Error; err != nil {
@@ -114,7 +114,7 @@ func CreateUsers(ctx context.Context, users []*User) error {
 	return err
 }
 
-//	添加 User
+// 添加 User
 func CreateUser(ctx context.Context, user *User) error {
 	err := GetDB().Clauses(dbresolver.Write).WithContext(ctx).Transaction(func(tx *gorm.DB) error {
 		if err := tx.Create(user).Error; err != nil {
@@ -125,7 +125,7 @@ func CreateUser(ctx context.Context, user *User) error {
 	return err
 }
 
-//	检查 Name 是否重复
+// 检查 Name 是否重复
 func CheckNameRepeat(ctx context.Context, userName string) (bool, error) {
 	usr, err := GetUserByName(ctx, userName)
 	if usr != nil {

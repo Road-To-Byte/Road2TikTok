@@ -5,4 +5,5 @@ use (
   ./dal
   ./pkg
   ./service/user_service
+  ./service/video_service
 )
