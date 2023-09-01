@@ -4,7 +4,7 @@ option go_package = "rpc/pb";
 
 package video;
 
-import "user.ptoto";
+import "user.proto";
 
 //  video
 
