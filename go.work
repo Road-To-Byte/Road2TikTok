@@ -6,4 +6,6 @@ use (
   ./pkg
   ./service/user_service
   ./service/video_service
+  ./service/comment_service
+  ./service/favorite_service
 )

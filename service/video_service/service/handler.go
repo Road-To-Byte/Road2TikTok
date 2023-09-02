@@ -2,7 +2,7 @@
  * @Autor: violet apricity ( Zhuangpx )
  * @Date: 2023-08-31 21:54:57
  * @LastEditors: violet apricity ( Zhuangpx )
- * @LastEditTime: 2023-09-02 03:43:06
+ * @LastEditTime: 2023-09-02 18:09:24
  * @FilePath: \Road2TikTok\service\video_service\service\handler.go
  * @Description:  Zhuangpx : Violet && Apricity:/ The warmth of the sun in the winter /
  */
@@ -32,7 +32,7 @@ func (this *VideoServiceImpl) Feed(ctx context.Context, req *pb.FeedRequest) (re
 	if req.Token != "" {
 		claims, err := Jwt.ParseToken(req.Token)
 		if err != nil {
-			log.Println("服务器发生错误：", err.Error())
+			log.Println("服务器发生错误：token解析失败", err.Error())
 			res := &pb.FeedResponse{
 				StatusCode: -1,
 				StatusMsg:  "服务器错误：token 解析错误",
